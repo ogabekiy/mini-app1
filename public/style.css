@@ -1,86 +1,66 @@
+/* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     color: #ffffff;
-    overflow: hidden;
 }
 
-#app {
+/* Container Styles */
+.container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 2s ease;
 }
 
-.welcome-container h1 {
+/* Coin Counter */
+.coin-display h1 {
     font-size: 2.5rem;
-    animation: slideIn 1.5s ease;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease;
 }
 
-#username {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffeb3b;
-    animation: colorPulse 2s infinite;
-}
-
-.description {
-    font-size: 1.2rem;
-    margin: 20px 0;
-    animation: fadeIn 3s ease;
-}
-
-#start-button {
-    padding: 10px 20px;
-    background: #ff4081;
+/* Round Button */
+.round-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffa726, #fb8c00);
     border: none;
-    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    outline: none;
+    transition: transform 0.1s ease, background 0.3s ease;
 }
 
-#start-button:hover {
-    background: #f50057;
-    transform: scale(1.1);
+/* Tap Animation */
+.round-button:active {
+    transform: scale(0.9);
+    background: radial-gradient(circle, #fb8c00, #e65100);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes colorPulse {
+/* Coin Increase Animation */
+@keyframes coinBounce {
     0% {
-        color: #ffeb3b;
+        transform: translateY(0);
+        opacity: 1;
     }
     50% {
-        color: #ffd740;
+        transform: translateY(-15px);
+        opacity: 0.8;
     }
     100% {
-        color: #ffeb3b;
+        transform: translateY(0);
+        opacity: 1;
     }
+}
+
+.fade {
+    animation: coinBounce 0.5s ease;
 }

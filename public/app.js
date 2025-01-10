@@ -1,30 +1,18 @@
-const tg = window.Telegram.WebApp;
+// Select elements
+const coinButton = document.getElementById('coin-button');
+const coinCountElement = document.getElementById('coin-count');
 
-// Log Telegram WebApp data
-console.log(tg.initDataUnsafe);
+let coins = 0;
 
-// Retrieve user name with fallback
-const userName = tg.initDataUnsafe.user?.first_name || 'Guest';
-const usernameElement = document.getElementById('username');
+// Tap Event
+coinButton.addEventListener('click', () => {
+    // Increment coins
+    coins += 1;
+    coinCountElement.textContent = coins;
 
-// Update the UI with the user's name
-usernameElement.textContent = `Hello, ${userName}!`;
-
-// Add dynamic effects
-let colors = ['#ff4081', '#ffa000', '#3f51b5', '#76ff03', '#1de9b6'];
-let i = 0;
-
-function changeUsernameColor() {
-    usernameElement.style.color = colors[i];
-    i = (i + 1) % colors.length;
-}
-
-setInterval(changeUsernameColor, 1000);
-
-// Handle button click
-document.getElementById('start-button').addEventListener('click', () => {
-    tg.close();
+    // Add animation effect
+    coinCountElement.classList.add('fade');
+    setTimeout(() => {
+        coinCountElement.classList.remove('fade');
+    }, 500);
 });
-
-// Expand Web App
-tg.expand();
